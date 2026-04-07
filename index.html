@@ -4,8 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>wisdom</title>
-  <meta name="description" content="Personal portfolio and projects" />
+  <meta name="description" content="wisdom — research fellow at stanford gsb's free systems lab" />
   <meta name="author" content="Wisdom" />
+  <meta property="og:title" content="wisdom" />
+  <meta property="og:description" content="research fellow at stanford gsb's free systems lab" />
+  <meta property="og:image" content="me.jpeg" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#fdfdfc" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%22 y=%2272%22 font-size=%2278%22 text-anchor=%22middle%22 font-family=%22-apple-system,BlinkMacSystemFont,sans-serif%22 font-weight=%22600%22>w</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -13,100 +22,133 @@
       padding: 0;
     }
 
+    html { -webkit-text-size-adjust: 100%; }
+
     body {
-      background-color: #ffffff;
-      color: #0f0f0f;
-      font-family: 'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      font-size: 15px;
-      line-height: 1.6;
+      background: #fdfdfc;
+      color: #1f1f1f;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 15.5px;
+      line-height: 1.7;
       min-height: 100vh;
-    }
-
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 48px 24px;
-    }
-
-    .about {
-      margin-bottom: 48px;
-    }
-
-    .intro {
-      margin-bottom: 16px;
-      color: #0f0f0f;
-      line-height: 1.8;
-    }
-
-    .intro .name {
-      font-weight: 600;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: 'kern', 'liga', 'calt';
     }
 
     a {
-      color: #8B5CF6;
+      color: #1f1f1f;
       text-decoration: underline;
+      text-decoration-color: #cfcfcf;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2.5px;
+      transition: text-decoration-color 0.2s ease;
+    }
+    a:hover { text-decoration-color: #1f1f1f; }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 72px 28px 80px;
     }
 
-    a:hover {
-      opacity: 0.8;
-    }
-
-    .work-section {
+    /* header */
+    .avatar {
+      width: 124px;
+      height: 124px;
+      object-fit: cover;
+      display: block;
       margin-bottom: 24px;
     }
 
-    .work-heading {
+    .greeting {
+      font-size: 16px;
+      color: #1f1f1f;
+      margin-bottom: 32px;
+    }
+    .greeting .name { font-weight: 600; }
+
+    /* tabs */
+    .tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 36px;
+    }
+    .tab {
+      background: transparent;
+      border: 1px solid #e2e2e2;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      color: #888;
+      cursor: pointer;
+      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      letter-spacing: 0.01em;
+    }
+    .tab:hover {
+      color: #1f1f1f;
+      border-color: #c2c2c2;
+    }
+    .tab.active {
+      background: #1f1f1f;
+      color: #fdfdfc;
+      border-color: #1f1f1f;
+    }
+
+    /* tab content */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .intro {
+      margin-bottom: 18px;
+      color: #2a2a2a;
+      line-height: 1.75;
+    }
+    .intro:last-of-type { margin-bottom: 0; }
+
+    .section { margin-top: 38px; }
+    .section:first-child { margin-top: 0; }
+
+    .section-heading {
       font-weight: 600;
-      margin-bottom: 12px;
+      color: #1f1f1f;
+      margin-bottom: 14px;
     }
 
     .work-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
-
     .work-list li {
-      color: #555;
+      color: #4a4a4a;
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.7;
     }
-
     .work-list li::before {
-      content: "• ";
-      color: #555;
+      content: "•";
+      position: absolute;
+      left: 4px;
+      color: #b5b5b5;
+    }
+    .arrow {
+      color: #a5a5a5;
+      margin: 0 4px;
     }
 
-    .social-links {
-      margin-top: 28px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0;
-    }
-
-    .social-links a {
-      color: #8B5CF6;
-      text-decoration: underline;
-      font-size: 14px;
-    }
-
-    .social-links .sep {
-      color: #aaa;
-      margin: 0 6px;
-      font-size: 13px;
-    }
-
-    .divider {
+    /* story accordion */
+    .story-divider {
       border: none;
-      border-top: 1px solid #e5e5e5;
-      margin: 32px 0;
+      border-top: 1px solid #ececec;
+      margin: 44px 0 24px;
     }
 
-    .accordion {
-      width: 100%;
-    }
-
-    .accordion-header {
+    .story-toggle {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -118,139 +160,203 @@
       width: 100%;
       text-align: left;
       font-family: inherit;
-      font-size: 15px;
+      font-size: 15.5px;
       font-weight: 600;
-      color: #0f0f0f;
+      color: #1f1f1f;
+      transition: opacity 0.15s ease;
     }
-
-    .accordion-header:hover {
-      opacity: 0.8;
-    }
+    .story-toggle:hover { opacity: 0.7; }
 
     .chevron {
-      font-size: 18px;
-      transition: transform 0.2s ease;
-      color: #555;
+      width: 14px;
+      height: 14px;
+      transition: transform 0.25s ease;
+      color: #9a9a9a;
+      flex-shrink: 0;
     }
+    .story-toggle.open .chevron { transform: rotate(180deg); }
 
-    .accordion-header.open .chevron {
-      transform: rotate(180deg);
-    }
-
-    .accordion-body {
+    .story-body {
       display: none;
-      padding-top: 16px;
+      padding-top: 18px;
     }
-
-    .accordion-body.open {
-      display: block;
-    }
-
-    .accordion-body p {
-      color: #555;
+    .story-body.open { display: block; }
+    .story-body p {
+      color: #4a4a4a;
       line-height: 1.8;
       margin-bottom: 16px;
     }
+    .story-body p:last-child { margin-bottom: 0; }
 
-    .accordion-body p:last-child {
-      margin-bottom: 0;
+    /* writing */
+    .writing-group { margin-top: 26px; }
+    .writing-group:first-child { margin-top: 0; }
+
+    .venue {
+      font-size: 11px;
+      font-weight: 500;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      margin-bottom: 12px;
+    }
+    .venue a {
+      color: #888;
+      text-decoration-color: #dcdcdc;
+    }
+    .venue a:hover {
+      color: #1f1f1f;
+      text-decoration-color: #1f1f1f;
+    }
+
+    .writing-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .writing-list li {
+      color: #4a4a4a;
+      line-height: 1.6;
+      padding-left: 16px;
+      position: relative;
+    }
+    .writing-list li::before {
+      content: "·";
+      position: absolute;
+      left: 6px;
+      top: -2px;
+      color: #b0b0b0;
+      font-weight: 700;
+    }
+
+    /* footer */
+    .social-links {
+      margin-top: 56px;
+      padding-top: 28px;
+      border-top: 1px solid #ececec;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .social-links a {
+      font-size: 14px;
+      color: #2a2a2a;
+    }
+    .social-links .sep {
+      color: #c8c8c8;
+      margin: 0 10px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 56px 22px 64px; }
+      .avatar { width: 104px; height: 104px; margin-bottom: 22px; }
+      body { font-size: 15px; }
+      .tabs { margin-bottom: 30px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <section class="about">
+  <main class="container">
+    <header>
+      <img class="avatar" src="me.jpeg" alt="wisdom" />
+      <p class="greeting">hi, i'm <span class="name">wisdom</span></p>
+    </header>
 
-      <div style="margin-bottom: 24px;">
-        <img src="me.jpeg" alt="wisdom" style="width: 128px; height: 128px; object-fit: cover; display: block;" />
-      </div>
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="about" role="tab" aria-selected="true">about</button>
+      <button class="tab" data-tab="research" role="tab" aria-selected="false">research</button>
+    </nav>
 
-      <p class="intro">hi, i'm <span class="name">wisdom</span></p>
+    <section class="tab-panel active" id="about-panel" role="tabpanel">
+      <p class="intro">i'm a research fellow at <a href="https://freesystems.net/" target="_blank" rel="noopener noreferrer">stanford gsb's free systems lab</a>, supervised by <a href="https://www.andrewbenjaminhall.com/" target="_blank" rel="noopener noreferrer">professor andrew hall</a>.</p>
 
-      <p class="intro">i'm 19, dropped out of my first uni, and now living in kigali. i spend my days contributing to open source and building things that actually ship.</p>
+      <p class="intro">these days i mostly think about ai/ml research. my background is in crypto and distributed systems, and i still build in that space. i like sitting between the two.</p>
 
-      <p class="intro">
-        i'm currently doing open-source work at
-        <a href="https://helius.dev" target="_blank" rel="noopener noreferrer">helius</a>,
-        <a href="https://astral.global" target="_blank" rel="noopener noreferrer">astral protocol</a>,
-        <a href="https://eigencloud.xyz" target="_blank" rel="noopener noreferrer">eigencloud</a>, and
-        <a href="https://flashbots.net" target="_blank" rel="noopener noreferrer">flashbots</a>
-      </p>
+      <p class="intro">when i'm not reading papers or shipping code, i'm usually watching anime, playing roblox, or trying (slowly) to get in the best shape of my life.</p>
 
-      <p class="intro">
-        i love watching anime and cartoons and playing games on roblox (big fan of the silly brainrot/brainbot experiences).
-      </p>
-
-      <p class="intro">
-        this year i want to get in the best shape of my life, learn to say no more often, and ship consistently.
-      </p>
-
-      <div class="work-section">
-        <p class="work-heading">what i've worked on:</p>
+      <div class="section">
+        <p class="section-heading">what i've worked on:</p>
         <ul class="work-list">
-          <li>user research at <a href="https://www.coinbase.com/" target="_blank" rel="noopener noreferrer">coinbase</a> ↳ collaborating with product &amp; engineering teams</li>
-          <li>fellow under <a href="https://x.com/ahall_research" target="_blank" rel="noopener noreferrer">prof. andrew hall</a> at <a href="https://freesystems.substack.com/" target="_blank" rel="noopener noreferrer">freesystems</a> ↳ ai research</li>
-          <li>
-            research at <a href="https://decentralised.co" target="_blank" rel="noopener noreferrer">decentralised.co</a>
-            ↳ building tools and charts serving 30k+ users across platforms
-          </li>
-          <li>research at <a href="https://shoal.xyz/" target="_blank" rel="noopener noreferrer">shoal </a> ↳ protocol-level research</li>
-          <li>
-            research engineer at <a href="https://astral.global" target="_blank" rel="noopener noreferrer">astral protocol</a>
-            ↳ building toward a decentralized geospatial web
-          </li>
-          <li>head of research at <a href="https://parallelresearch.substack.com/" target="_blank" rel="noopener noreferrer">parallel research</a> ↳ long-form pieces on solana, plasma, and zk tech</li>
-          <li>founding engineer at <a href="https://website.toronet.org/zendmart/" target="_blank" rel="noopener noreferrer">zendmart</a> ↳ tinkering with solidity and product</li>
+          <li>research fellow at <a href="https://freesystems.net/" target="_blank" rel="noopener noreferrer">stanford gsb free systems lab</a> <span class="arrow">↳</span> ai research under prof. andrew hall</li>
+          <li>user research at <a href="https://www.coinbase.com/" target="_blank" rel="noopener noreferrer">coinbase</a> <span class="arrow">↳</span> working with product &amp; engineering teams</li>
+          <li>open-source contributions at <a href="https://helius.dev" target="_blank" rel="noopener noreferrer">helius</a>, <a href="https://eigencloud.xyz" target="_blank" rel="noopener noreferrer">eigencloud</a>, and <a href="https://flashbots.net" target="_blank" rel="noopener noreferrer">flashbots</a></li>
+          <li>research engineer at <a href="https://astral.global" target="_blank" rel="noopener noreferrer">astral protocol</a> <span class="arrow">↳</span> building toward a decentralized geospatial web</li>
+          <li>research at <a href="https://shoal.gg/" target="_blank" rel="noopener noreferrer">shoal research</a> <span class="arrow">↳</span> deep dives and thesis-driven reports</li>
+          <li>research at <a href="https://www.decentralised.co/" target="_blank" rel="noopener noreferrer">decentralised.co</a> <span class="arrow">↳</span> tools and charts serving 30k+ users</li>
+          <li>head of research at <a href="https://parallelresearch.substack.com/" target="_blank" rel="noopener noreferrer">parallel research</a> <span class="arrow">↳</span> long-form writing on solana, plasma, and zk</li>
+          <li>founding engineer at <a href="https://website.toronet.org/zendmart/" target="_blank" rel="noopener noreferrer">zendmart</a></li>
         </ul>
       </div>
 
-      <div class="social-links">
-        <a href="https://x.com/oxwizzdom" target="_blank" rel="noopener noreferrer">twitter</a>
-        <span class="sep">·</span>
-        <a href="https://github.com/owizdom" target="_blank" rel="noopener noreferrer">github</a>
-        <span class="sep">·</span>
-        <a href="https://t.me/oxwizzdom" target="_blank" rel="noopener noreferrer">telegram</a>
+      <hr class="story-divider" />
+
+      <button class="story-toggle" id="story-toggle" onclick="toggleStory()" aria-expanded="false">
+        my story
+        <svg class="chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="3 5 6 8 9 5"></polyline>
+        </svg>
+      </button>
+      <div class="story-body" id="story-body">
+        <p>i grew up in nigeria, raised on books by physicists and historians. curiosity shaped most of my childhood. i spent years tinkering with things — building small robot cars and planes, taking apart hardware, trying to understand how systems worked.</p>
+        <p>when resources ran out, i drifted toward software. i taught myself to code on school computers, sometimes writing qbasic on paper because i didn't have a laptop to run them on. i moved through phases — robotics, cybersecurity, programming — learning whatever i could find online.</p>
+        <p>eventually i found my way into blockchain and open systems, and later into ai and ml research. both felt like the same thing to me: technology, economics, and big ideas about how the world could work. these days i sit somewhere between the two.</p>
+        <p>life since then hasn't been linear. i left my first university after a few months, moved abroad to study in kigali, lost jobs, slept on couches, and had long stretches where nothing felt stable. but those years taught me a lot about resilience and about building even when things are uncertain.</p>
+        <p>i haven't figured everything out yet. and honestly, i'm okay with that. more experiments, more work, more growth. let's see where it goes.</p>
       </div>
     </section>
 
-    <hr class="divider" />
-
-    <div class="accordion">
-      <button class="accordion-header open" id="story-toggle" onclick="toggleStory()" aria-expanded="true">
-        my story
-        <span class="chevron">&#8963;</span>
-      </button>
-      <div class="accordion-body open" id="story-body">
-        <p>
-          i grew up in nigeria, raised on books by physicists and historians. curiosity shaped most
-          of my childhood. i spent years tinkering with things: building small robot cars and planes,
-          taking apart hardware, trying to understand how systems worked.
-        </p>
-        <p>
-          when resources ran out, i drifted toward software. i taught myself to code on school
-          computers, sometimes writing QBASIC on paper because i didn't have a laptop to run them on.
-          i moved through phases: robotics, cybersecurity, programming learning whatever i could
-          find online.
-        </p>
-        <p>
-          eventually i found my way into blockchain and open systems. it felt like the intersection of
-          everything i loved: technology, economics, and big ideas about how the world could work.
-        </p>
-        <p>
-          life since then hasn't been linear. i left my first university after a few months, moved
-          abroad to study in kigali, lost jobs, slept on couches, and had long stretches where nothing
-          felt stable. but those years taught me a lot about resilience and about building even when
-          things are uncertain.
-        </p>
-        <p>
-          i haven't figured everything out yet. and honestly, i'm okay with that. more experiments.
-          more work. more growth. let's see where it goes.
-        </p>
+    <section class="tab-panel" id="research-panel" role="tabpanel">
+      <div class="writing-group">
+        <p class="venue"><a href="https://parallelresearch.substack.com/" target="_blank" rel="noopener noreferrer">parallel research</a></p>
+        <ul class="writing-list">
+          <li><a href="https://parallelresearch.substack.com/p/mev-a-deep-dive" target="_blank" rel="noopener noreferrer">mev — a deep dive</a></li>
+          <li><a href="https://parallelresearch.substack.com/p/confidential-stablecoin-transfers" target="_blank" rel="noopener noreferrer">confidential stablecoin transfers on plasma: a zk-snark-based shielded pool design</a></li>
+          <li><a href="https://parallelresearch.substack.com/p/betting-on-tees-the-infrastructure" target="_blank" rel="noopener noreferrer">betting on tees: the infrastructure thesis for zksync's market edge</a></li>
+        </ul>
       </div>
-    </div>
-  </div>
+
+      <div class="writing-group">
+        <p class="venue"><a href="https://collective.flashbots.net/u/wisdom/summary" target="_blank" rel="noopener noreferrer">flashbots forum</a></p>
+        <ul class="writing-list">
+          <li><a href="https://collective.flashbots.net/t/the-6-99-without-pbs/5283" target="_blank" rel="noopener noreferrer">the 6.99% without pbs</a></li>
+          <li><a href="https://collective.flashbots.net/t/africa-on-the-mev-map/5432" target="_blank" rel="noopener noreferrer">africa on the mev map</a></li>
+          <li><a href="https://collective.flashbots.net/t/frp-for-busy-nerds/5427" target="_blank" rel="noopener noreferrer">frp for busy nerds</a></li>
+          <li><a href="https://collective.flashbots.net/t/introducing-flashbots-forum-the-app/5435" target="_blank" rel="noopener noreferrer">introducing flashbots forum — the app</a></li>
+          <li><a href="https://x.com/oxwizzdom/status/1968282060809699546" target="_blank" rel="noopener noreferrer">family feud: who wins multi-slot mev?</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="social-links">
+      <a href="https://x.com/oxwizzdom" target="_blank" rel="noopener noreferrer">twitter</a>
+      <span class="sep">·</span>
+      <a href="https://github.com/owizdom" target="_blank" rel="noopener noreferrer">github</a>
+      <span class="sep">·</span>
+      <a href="https://t.me/oxwizzdom" target="_blank" rel="noopener noreferrer">telegram</a>
+    </footer>
+  </main>
 
   <script>
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+        document.querySelectorAll('.tab').forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        document.getElementById(`${target}-panel`).classList.add('active');
+      });
+    });
+
     function toggleStory() {
       const btn = document.getElementById('story-toggle');
       const body = document.getElementById('story-body');
